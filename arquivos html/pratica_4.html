@@ -1,0 +1,292 @@
+<!--1) Usando HTML, CSS e JS, crie um algoritmo para apresentar a soma de dois números
+informados pelo usuário. O conteúdo dos arquivos CSS e JS deve estar em arquivos
+externos à página HTML. A interface deve ser semelhante a apresentada na tela abaixo.-->
+<!--
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function somarValores() {
+            var n1 = document.getElementById("texto1").value;
+            var n2 = document.getElementById("texto2").value;
+            var soma = parseInt(n1) + parseInt(n2);
+            document.getElementById("result").innerHTML = soma;
+        }
+    </script>
+    <title>Pratica</title>
+    <style>
+        body {
+            font-size: 1rem;
+            font-family: Arial;
+            height: 95%;
+        }
+
+        main {
+            margin: 2rem auto;
+            width: 32rem;
+            height: 30rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 2rem;
+        }
+
+        .numero,
+        .resultado {
+            background-image: linear-gradient(to bottom right, yellow, orange);
+            height: 3rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .resultado {
+            background-image: linear-gradient(to bottom right, green, green);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        input {
+            padding: 0.5rem;
+            margin: 0.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Somar dois números</h1>
+
+        <div class="numero">
+            Informe o primeiro número: <input id="texto1" type="number">
+        </div>
+
+        <div class="numero">
+            Informe o primeiro número: <input id="texto2" type="number">
+        </div>
+
+        <button onclick="somarValores()">Somar</button>
+        <div id="result" class="resultado"></div>
+    </main>
+</body>
+
+</html>
+-->
+
+<!--2) Usando HTML, CSS e JS, crie um algoritmo para apresentação e validação de um
+formulário para cadastro de funcionários. O conteúdo dos arquivos HTML, CSS e JS deve
+estar em arquivos separados. A interface deve ser semelhante a apresentada abaixo.-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+
+    <script>
+        function mascData(objeto, evento) {
+            if (evento.keyCode == 8 || evento.keyCode == 46) {
+                return true;
+            }
+
+            if (evento.keyCode < 48 || evento.keyCode > 57) {
+                alert("Somente números");
+                return false;
+            }
+
+            if (objeto.value.length == 10) {
+                return false;
+            }
+
+            if ((objeto.value.length == 2) || (objeto.value.length == 5)) {
+                objeto.value = objeto.value + '/';
+            }
+
+            return true;
+        }
+
+        var form = document.getElementById("form")
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            console.log(event);
+        });
+
+        function verificarCadastro() {
+            var mensagemErro = "";
+
+            if (nome.value == "") {
+                mensagemErro += "Informe o nome.<br>";
+            }
+
+            if (email.value == "") {
+                mensagemErro += "Informe o email.<br>";
+            }
+
+            if (datanasc.value == "") {
+                mensagemErro += "Informe a data de nascimento.<br>";
+            }
+
+            if (escolaridade.value == "") {
+                mensagemErro += "Informe a escolaridade.<br>";
+            }
+
+            var sexoPreenchido = false;
+            var opcoesSexo = document.getElementsByName("sexo");
+            for (var i = 0; i < opcoesSexo.length; i++) {
+                if (opcoesSexo[i].checked) {
+                    sexoPreenchido = true;
+                    break;
+                }
+            }
+
+            if (sexoPreenchido == false) {
+                mensagemErro += "Informe o sexo.<br>";
+            }
+
+            if (mensagemErro == "") {
+                alert("Funcionário cadastrado com sucesso!!!");
+                return true;
+            } else {
+                resp.innerHTML = mensagemErro;
+                return false;
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial;
+            height: 95%;
+            font-size: 17px;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+            font-size: 2rem;
+        }
+
+        form {
+            width: 23rem;   
+            margin: 8rem auto 1rem auto;
+            background-image: linear-gradient(to bottom right, gray, rgb(138, 138, 238));
+            color: black;
+            border: solid rgb(1, 1, 68) 1px;
+            padding: 2rem;
+            border-radius: .9rem;
+        }
+
+        #resp {
+            width: 25rem;
+            margin: 1rem auto 2rem auto;
+            color: red;
+            padding: 1rem;
+        }
+
+        .botao {
+            background-image: linear-gradient(to bottom left, rgb(86, 145, 223), rgb(97, 64, 245));
+            color: black;
+            padding: 0.4rem;
+            border: 0;
+            border-radius: .5rem;
+        }
+
+        .entrada {
+            border-radius: .9rem;
+            border: 0;
+        }
+
+        #nome,
+        #email,
+        #datanasc,
+        #escolaridade {
+            width: 12rem;
+            height: 1.3rem;
+        }
+
+        option {
+            color: rgb(71, 2, 2);
+        }
+
+        #cadastro {
+            width: 12rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form id="form" name="CadastroFormulario" onsubmit="verificarCadastro()">
+        <h1>Cadastro de funcionários</h1>
+
+        <table>
+            <tr>
+                <td>Nome: </td>
+                <td>
+                    <input type="text" id="nome" class="entrada" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>E-mail: </td>
+                <td>
+                    <input type="text" id="email" class="entrada" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Data de nascimento: </td>
+                <td>
+                    <input type="text" id="datanasc" class="entrada" onkeypress="return mascData(this, event);" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Escolaridade: </td>
+                <td>
+                    <select id="escolaridade" class="entrada">
+                        <option value=""></option>
+                        <option value="1">Ensino Fundamental</option>
+                        <option value="2">Ensino Médio</option>
+                        <option value="3">Graduação</option>
+                        <option value="4">Pós-graduação</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Sexo: </td>
+                <td>
+                    <input name="sexo" id="sexoFem" class="entrada" type="radio" />
+                    <label for="sexoFeminino">
+                        Feminino
+                    </label>
+
+                    <input name="sexo" id="sexoMasc" class="entrada" type="radio" />
+                    <label for="sexoMasculino">
+                        Masculino
+                    </label>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="reset" class="botao" value="Limpar" name="limpa" />
+                </td>
+                <td>
+                    <button type="submit" id="cadastro" class="botao" name="cadastro">Cadastrar</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="resp"></div>
+</body>
+
+</html>
