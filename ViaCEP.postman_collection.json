@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "8d0e218e-34cf-47ce-864c-888489dbd82f",
+		"name": "ViaCEP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Leitura",
+			"item": [
+				{
+					"name": "Atividade2Primeirolink",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Atividade2Segundolink",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Atividade2Terceirolink",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Atividade2Quartolink",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
